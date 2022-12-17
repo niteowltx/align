@@ -1,0 +1,8 @@
+
+# take all *.jpg files in current directory and make an mp4 from them
+
+FRAME_RATE=16
+REFS=4		# encoder reference frames (1-16)
+QUALITY=30	# constant rate factor (lower is better, 17=nearly lossless, 23=ok, 50=worst)
+
+ffmpeg -f image2 -r ${FRAME_RATE} -pattern_type glob -i '*.jpg' -profile:v high422 -refs ${REFS} -vcodec libx264 -crf ${QUALITY} $1

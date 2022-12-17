@@ -1,0 +1,37 @@
+
+// all alignment and cropping is done against this frame
+// this can be one of the frames in the capture, or a separate constructed image
+reference	= "cap00500.jpg"
+
+// crop aligned frame to these values
+width		= 3240
+height		= 2160
+//left		= 0		// left column
+//top		= 0		// top row
+
+// where does the aligner look when comparing frames
+// fft_width and fft_height should probably describe a thin, tall area
+// aligned over the sprocket holes
+fft_width	= 7		// log2 of width (must be 2-13)
+fft_height	= 11		// log2 of height (must be 2-13)
+//fft_left	= 0		// left column
+//fft_top	= 0		// top row
+
+// other
+quality		= 100		// jpg output quality (0-100)
+border		= 100		// size of gray pixel border (applied after alignment but before crop)
+trust		= 2.4
+
+// pixel convert weights (should sum to 1.000, but really just the ratios matter)
+red_weight	= 0.299
+green_weight	= 0.587
+blue_weight	= 0.114
+
+// subdirectory name to write aligned images
+align_dir	= "align"
+correl_dir	= "correl"
+
+// options
+verbose		= true		// show settings and frame alignment calculations
+debug		= false		// add before(red) and after(blue) boxes around FFT area
+correlation	= true		// save correlation surface as a jpg in correl_dir

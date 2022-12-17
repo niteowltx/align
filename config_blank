@@ -1,0 +1,5 @@
+@include "../../config_16mm"
+fft_left	= ?	// fft left column
+fft_top		= ?	// fft top row
+left		= ?	// crop left column
+top		= ?	// crop top row

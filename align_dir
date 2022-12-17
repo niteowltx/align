@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# align a whole directory of images and make a video of them
+
+ALIGN_DIR=align
+CORREL_DIR=correl
+DIR=`pwd`
+OUT=`basename ${DIR}`.mp4
+
+if [ ! -e config ]; then
+	echo No config file.  Create one and retry.
+	exit
+fi
+
+# align all frames, writing new files into ALIGN_DIR
+align *.jpg | tee log
+if [ ${PIPESTATUS[0]} -ne 0 ]; then
+	echo Align fail
+	exit
+fi
+
+# Adjust make_mp4 settings if desired
+cd ${ALIGN_DIR}
+make_mp4 ../${OUT}
